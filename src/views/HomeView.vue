@@ -1,10 +1,13 @@
 <template>
- <main>
-   <FormGenerator/>
- </main>
+  <FormGenerator/>
 </template>
 
-<script setup>
-import FormGenerator from "@/components/Form/FormGenerator";
+<script lang="ts">
+import { defineComponent } from 'vue';
+import FormGenerator from "@/components/Form/FormGenerator.vue";
 
+export default defineComponent({
+  name: 'HomeView',
+  components: {FormGenerator},
+});
 </script>

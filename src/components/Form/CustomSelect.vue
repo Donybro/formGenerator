@@ -1,22 +1,28 @@
 <template>
-  <select :class="className" :name="name" :id="id" @change="onChange">
-    <option value="" selected disabled hidden>{{placeholder}}</option>
-    <option :class="optionClassName" v-for="opt in options" :key="opt.value" :value="opt.value">{{opt.label}}</option>
-  </select>
+  <div class="field_wrapper">
+    <label v-if="label" :for="id">{{label}}</label>
+    <select :class="className" :name="name" :id="id" @change="onChange">
+      <option value="" selected disabled hidden>{{placeholder}}</option>
+      <option :class="optionClassName" v-for="opt in options" :key="opt.value" :value="opt.value">{{opt.label}}</option>
+    </select>
+  </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import {defineProps, toRefs} from 'vue'
-const props = defineProps({
-  name: String,
-  id: String,
-  className: String,
-  placeholder: String,
-  optionClassName:String,
-  onChange : Function,
-  options:Array
-})
-const {name,className,optionClassName,onChange,id,options,placeholder}  = toRefs(props)
+import {IOptionInterface} from "@/types/option.interface";
+interface Props {
+  name: string,
+  id: string,
+  className?: string,
+  label?: string,
+  placeholder?: string,
+  optionClassName?:string,
+  onChange ?: ()=>void,
+  options:IOptionInterface[]
+}
+const props = defineProps<Props>()
+const {name,className,label,optionClassName,onChange,id,options,placeholder}  = toRefs(props)
 </script>
 
 <style scoped>

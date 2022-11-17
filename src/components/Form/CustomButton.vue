@@ -1,20 +1,26 @@
 <template>
-  <button :id="id" :type="type" :name="name" :class="className" @click="onClick">{{label}}</button>
+  <div class="field_wrapper">
+    <label v-if="label" :for="id">{{label}}</label>
+    <button :id="id" :type="buttonType" :name="name" :class="className" @click="onClick">{{buttonText}}</button>
+  </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {defineProps, toRefs} from "vue";
 
-const props = defineProps({
-  label: String,
-  name: String,
-  type: String,
-  className: String,
-  id: String,
-  onClick : Function
-})
+interface Props {
+  label?: string,
+  buttonText: string,
+  name: string,
+  buttonType: string,
+  className?: string,
+  id: string,
+  onClick ?: ()=>{}
+}
 
-const {label,name,id,type,className,onClick}  = toRefs(props)
+const props = defineProps<Props>()
+
+const {label,buttonText,name,id,buttonType,className,onClick}  = toRefs(props)
 </script>
 
 <style scoped>
