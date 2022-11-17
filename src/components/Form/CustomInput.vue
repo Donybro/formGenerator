@@ -1,5 +1,8 @@
 <template>
-  <input :id="id" :type="type" :name="name" :class="className" :value="value" @input="onChange">
+  <div class="field_wrapper">
+    <label :for="id">LAbel</label>
+    <input :id="id" :type="type" :name="name" :class="className" :value="value" @input="onChange">
+  </div>
 </template>
 
 <script setup>
@@ -21,4 +24,8 @@ console.log(
 
 <style scoped>
 
+.field_wrapper{
+  display: flex;
+  flex-direction: column;
+}
 </style>

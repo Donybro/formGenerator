@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="formWrapper">
     <template v-for="field in fieldsArray" :key="field.id">
       <CustomInput v-if="field.fieldType === 'input'" v-bind="field"/>
       <CustomButton v-if="field.fieldType === 'button'" v-bind="field"  />
@@ -23,7 +23,8 @@
       className:"input_text_class",
       value:"first-input value",
       onChange:(e)=> console.log(e)
-    },{
+    },
+    {
       fieldType :'button',
       type:"button",
       name:'first-button',
@@ -48,6 +49,13 @@
   ]
 </script>
 
-<style>
-
+<style scoped>
+.formWrapper{
+  background: #f89f9f;
+  width: 700px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
 </style>
